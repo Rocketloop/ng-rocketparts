@@ -7,7 +7,7 @@
             "root": "projects/ng-rocketparts",
             "sourceRoot": "projects/ng-rocketparts/src",
             "projectType": "library",
-            "prefix": "rp",
+            "prefix": "ngr",
             "schematics": {
                 "@schematics/angular:component": {
                     "styleext": "scss"
