@@ -17,11 +17,11 @@ npm install --save @rocketloop/ng-rocketparts
 Once installed you need to import our main module:
 
 ```
-import { RocketPartsModule } from '@rocketloop/ng-rocketparts';
+import { NgRocketPartsModule } from '@rocketloop/ng-rocketparts';
 
 @NgModule({
   ...
-  imports: [ RocketPartsModule, ... ],
+  imports: [ NgRocketPartsModule, ... ],
   ...
 })
 export class YourAppModule {
