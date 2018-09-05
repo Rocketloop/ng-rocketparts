@@ -1,6 +1,26 @@
 {
     "name": "@rocketloop/ng-rocketparts",
-    "version": "0.0.1",
+    "description": "Angular components that get things done",
+    "author": "Florian Reifschneider <florian@rocketloop.de>",
+    "keywords": [
+        "angular",
+        "angular 2",
+        "component library",
+        "components"
+    ],
+    "contributors": [
+        "Alex Klein <alex@rocketloop.de>",
+        "Fernando Gonzalez Goncharov <fernando.gonzalez.goncharov@scalors.com>"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/Rocketloop/ng-rocketparts",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Rocketloop/ng-rocketparts.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Rocketloop/ng-rocketparts/issues"
+    },
     "peerDependencies": {
         "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
         "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
