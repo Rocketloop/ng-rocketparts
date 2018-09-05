@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+    - node
+
+script: npm run test:ci
+
+stages:
+    - test
+    - build
+    - name: deploy
+      if: branch = master
+
+jobs:
+    include:
+        - stage: build
+          script: npm run build
+        - stage: deploy
+          script: skip
