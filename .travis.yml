@@ -5,16 +5,19 @@ node_js:
 
 stages:
     - test
-    - name: build
-      if: branch != master
-    - name: deploy
-      if: branch = master
+    - build
+
+branches:
+    except:
+        - /^v\d+\.\d+\.\d+$/
 
 jobs:
     include:
         - script: npm run test:ci
         - stage: build
           script: npm run build
-        - stage: deploy
-          before_script: npm run build
-          script: skip
+          deploy:
+              provider: script
+              script: bash scripts/deploy.sh
+              on:
+                  branch: master
