@@ -1,5 +1,7 @@
 # Rocket Parts
 
+[![Build Status](https://www.travis-ci.com/Rocketloop/ng-rocketparts.svg?branch=master)](https://www.travis-ci.com/Rocketloop/ng-rocketparts)
+
 A collection of useful and battle-tested single-prupose Angular components that get things done. 
 
 ## Status
