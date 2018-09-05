@@ -8,8 +8,8 @@ stages:
     - build
 
 branches:
-    except:
-        - /^v\d+\.\d+\.\d+$/
+    only:
+        - master
 
 jobs:
     include:
