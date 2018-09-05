@@ -3,8 +3,6 @@ language: node_js
 node_js:
     - node
 
-script: npm run test:ci
-
 stages:
     - test
     - build
@@ -13,6 +11,7 @@ stages:
 
 jobs:
     include:
+        - script: npm run test:ci
         - stage: build
           script: npm run build
         - stage: deploy
