@@ -5,7 +5,8 @@ node_js:
 
 stages:
     - test
-    - build
+    - name: build
+      if: branch != master
     - name: deploy
       if: branch = master
 
@@ -15,4 +16,5 @@ jobs:
         - stage: build
           script: npm run build
         - stage: deploy
+          before_script: npm run build
           script: skip
