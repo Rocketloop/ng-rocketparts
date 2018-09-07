@@ -1,0 +1,9 @@
+<ng-container *ngFor="let column of config.columns">
+    <td *ngIf="column.decorator === 'component'; else regularCell" ngrDynamicTableComponentCell [component]="column.decoratorOptions?.component"
+        [decoratorOptions]="column.decoratorOptions" [componentOptions]="column.decoratorOptions?.componentOptions"
+        [data]="data" [path]="column.path" (event)="onComponentEvent($event)"></td>
+    <ng-template #regularCell>
+        <td ngrDynamicTableCell [decorator]="column.decorator" [decoratorOptions]="column.decoratorOptions" [data]="data"
+            [path]="column.path"></td>
+    </ng-template>
+</ng-container>

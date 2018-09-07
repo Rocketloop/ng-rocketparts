@@ -1,0 +1,62 @@
+<table class="table" *ngIf="config">
+    <thead *ngIf="!config.noColumnHeaders">
+        <tr>
+            <th *ngFor="let column of config.columns" class="dynamic-table-header {{column.decorator ? 'dynamic-table-header--'+column.decorator:''}}">
+                <a *ngIf="column.sortPath; else notSortableLabel" class="dynamic-table-header__label" href="#" (click)="onSortClicked($event, column)">{{column.label}}</a>
+                <ng-template #notSortableLabel>
+                    <div class="dynamic-table-header__label">{{column.label}}</div>
+                </ng-template>
+                <div class="dynamic-table-header__meta">
+                    <a *ngIf="column.sortPath" class="dynamic-table-header__sort"
+                        [class.dynamic-table-header__sort--asc]="sort && sort.path === column.sortPath && sort.order === SORT_ORDER.ASC"
+                        [class.dynamic-table-header__sort--desc]="sort && sort.path === column.sortPath && sort.order === SORT_ORDER.ASC"
+                        href="#" (click)="onSortClicked($event, column)"></a>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <ng-container *ngIf="config.grouped; else notGrouped">
+        <ng-container *ngIf="data && data.length > 0; else noData">
+            <tbody *ngFor="let group of data">
+                <tr class="ngr-dynamic-table-row table-group-header">
+                    <td [attr.colspan]="config.columns.length" *ngIf="config.groupHeader.decorator === 'component'; else regularCell"
+                        ngrDynamicTableComponentCell [component]="config.groupHeader.decoratorOptions?.component"
+                        [decoratorOptions]="config.groupHeader.decoratorOptions" [componentOptions]="config.groupHeader.decoratorOptions?.componentOptions"
+                        [data]="group" [path]="config.groupHeader.path" (event)="onComponentEvent($event)"></td>
+                    <ng-template #regularCell>
+                        <td [attr.colspan]="config.columns.length" ngrDynamicTableCell [decorator]="config.groupHeader.decorator"
+                            [decoratorOptions]="config.groupHeader.decoratorOptions" [data]="group" [path]="config.groupHeader.path"></td>
+                    </ng-template>
+                </tr>
+                <tr class="ngr-dynamic-table-row" *ngFor="let data of group.rows; trackBy: trackByFunction"
+                    ngrDynamicTableRow [config]="config" [data]="data" (componentEvent)="onComponentEvent(data?.id, $event)"></tr>
+            </tbody>
+        </ng-container>
+    </ng-container>
+    <ng-template #notGrouped>
+        <tbody *ngIf="data && data.length > 0; else noData">
+            <tr class="ngr-dynamic-table-row" *ngFor="let data of data; trackBy: trackByFunction" ngrDynamicTableRow
+                [config]="config" [data]="data" (componentEvent)="onComponentEvent(data?.id, $event)"></tr>
+        </tbody>
+    </ng-template>
+
+    <ng-template #noData>
+        <tbody *ngIf="data !== undefined; else loadingData">
+            <tr>
+                <td class="dynamic-table__empty-message" [colSpan]="config.columns?.length">
+                    {{emptyMessage}}
+                </td>
+            </tr>
+        </tbody>
+        <ng-template #loadingData>
+            <tbody>
+                <tr>
+                    <td class="dynamic-table__empty-message" [colSpan]="config.columns?.length">
+                        {{loadingMessage}}
+                    </td>
+                </tr>
+            </tbody>
+        </ng-template>
+    </ng-template>
+
+</table>
