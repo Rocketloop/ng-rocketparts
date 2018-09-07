@@ -7,16 +7,16 @@ import { Observable } from 'rxjs';
  */
 @Pipe({ name: 'maybeAsync', pure: false })
 export class MaybeAsyncPipe extends AsyncPipe implements PipeTransform {
-  transform<T>(obj: null): null;
-  transform<T>(obj: undefined): undefined;
-  transform<T>(obj: string): any;
-  transform<T>(obj: Observable<T> | Promise<T>): T | null;
-  transform(
-    obj: Observable<any> | Promise<any> | string | null | undefined
-  ): any {
-    if (typeof obj === 'string' || obj instanceof String) {
-      return obj;
+    transform<T>(obj: null): null;
+    transform<T>(obj: undefined): undefined;
+    transform<T>(obj: string): any;
+    transform<T>(obj: Observable<T> | Promise<T>): T | null;
+    transform(
+        obj: Observable<any> | Promise<any> | string | null | undefined
+    ): any {
+        if (typeof obj === 'string' || obj instanceof String) {
+            return obj;
+        }
+        return super.transform(obj as Observable<any>);
     }
-    return super.transform(obj as Observable<any>);
-  }
 }
