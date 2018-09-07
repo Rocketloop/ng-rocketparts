@@ -1,0 +1,5 @@
+<input (blur)="onBlur()" #input="ngModel" [min]="min" [max]="max"
+       [attr.min]="min" [attr.max]="max" (ngModelChange)="onInputChange($event)"
+       [ngModel]="displayValue" [disabled]="disabled"
+       [placeholder]="placeholder || ''" placement="top"
+       triggers="focus:blur"/>
