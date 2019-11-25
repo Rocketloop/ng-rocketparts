@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { of, BehaviorSubject } from 'rxjs';
+import { of, BehaviorSubject, Observable } from 'rxjs';
 import { get } from 'lodash';
 
 import { DynamicTableSortConfig } from '../../models/dynamic-table.model';
@@ -89,7 +89,7 @@ export class SingleBodyDynamicTableComponent {
                 </ngr-dynamic-table>`
 })
 export class GroupedBodyDynamicTableComponent {
-    data$ = of([
+    data$: Observable<any> = of([
         {
             group: {
                 label: `Doe's family`
