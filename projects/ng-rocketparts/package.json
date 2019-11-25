@@ -10,7 +10,8 @@
     ],
     "contributors": [
         "Alex Klein <alex@rocketloop.de>",
-        "Fernando Gonzalez Goncharov <fernando.gonzalez.goncharov@scalors.com>"
+        "Fernando Gonzalez Goncharov <fernando.gonzalez.goncharov@scalors.com>",
+        "Max Beckenbach <max@rocketloop.de>"
     ],
     "license": "MIT",
     "homepage": "https://github.com/Rocketloop/ng-rocketparts",
@@ -22,8 +23,8 @@
         "url": "https://github.com/Rocketloop/ng-rocketparts/issues"
     },
     "peerDependencies": {
-        "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-        "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+        "@angular/common": "^8.0.0",
+        "@angular/core": "^8.0.0"
     },
     "devDependencies": {
         "semantic-release": "^15.9.12"
